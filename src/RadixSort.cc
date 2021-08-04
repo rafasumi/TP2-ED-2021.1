@@ -9,7 +9,7 @@ void RadixSort::sort(int left, int right, int bitIndex, Mind* array) {
   int j = right;
   Mind aux;
 
-  if (right <= left || bitIndex > numbits) return;
+  if (right <= left || bitIndex >= numbits) return;
   while (j != i) {
     while (array[i].getData()[bitIndex] == '0' && (i < j)) i++;
     while (array[j].getData()[bitIndex] == '1' && (j > i)) j--;
@@ -19,9 +19,9 @@ void RadixSort::sort(int left, int right, int bitIndex, Mind* array) {
     array[j] = aux;
   }
   
-  if (array[j].getData()[bitIndex] == '0') j++;
-  sort(left, j-1, bitIndex+1, array);
-  sort(j, right, bitIndex+1, array);
+  if (array[right].getData()[bitIndex] == '0') j++;
+  if (left < j-1) sort(left, j-1, bitIndex+1, array);
+  if (j < right) sort(j, right, bitIndex+1, array);
 }
 
 void RadixSort::radixExchangeSort(Mind* array, int size) {

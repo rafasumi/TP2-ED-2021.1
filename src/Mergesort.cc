@@ -17,7 +17,7 @@ void Mergesort::merge(int left, int mid, int right, Mind* array) {
   int indexA = left;
 
   while (indexL < sizeL && indexR < sizeR) {
-    if (valuesL[indexL].getName() < valuesR[indexR].getName()) {
+    if (valuesL[indexL].getName() <= valuesR[indexR].getName()) {
       array[indexA] = valuesL[indexL];
       indexL++;
     } else {
@@ -28,16 +28,14 @@ void Mergesort::merge(int left, int mid, int right, Mind* array) {
     indexA++;
   }
 
-  if (indexA < sizeL + sizeR) {
-    for (; indexL < sizeL; indexL++) {
-      array[indexA] = valuesL[indexL];
-      indexA++;
-    }
+  for (; indexL < sizeL; indexL++) {
+    array[indexA] = valuesL[indexL];
+    indexA++;
+  }
 
-    for(; indexR < sizeR; indexR++) {
-      array[indexA] = valuesR[indexR];
-      indexA++;
-    }
+  for(; indexR < sizeR; indexR++) {
+    array[indexA] = valuesR[indexR];
+    indexA++;
   }
 
   delete[] valuesL;
@@ -46,7 +44,7 @@ void Mergesort::merge(int left, int mid, int right, Mind* array) {
 
 void Mergesort::sort(int left, int right, Mind* array) {
   if (left < right) {
-    int mid = (left + right)/2;
+    int mid = left + (right - left)/2;
     sort(left, mid, array);
     sort(mid+1, right, array);
     merge(left, mid, right, array);

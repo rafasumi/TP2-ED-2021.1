@@ -1,7 +1,6 @@
 #ifndef QUICKSORT_H
 #define QUICKSORT_H
 
-#include <string>
 #include "Mind.h"
 
 namespace Quicksort {

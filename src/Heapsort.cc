@@ -1,13 +1,11 @@
 #include "Heapsort.h"
 
-#include <iostream>
-
 using namespace Heapsort;
 
 void Heapsort::heapify(int left, int right, Mind* array) {
   Mind aux;
   int i = left;
-  int j = i * 2;
+  int j = i * 2 + 1;
 
   aux = array[i];
 
@@ -19,17 +17,17 @@ void Heapsort::heapify(int left, int right, Mind* array) {
 
     array[i] = array[j];
     i = j;
-    j = i * 2;
+    j = i * 2 + 1;
   }
 
   array[i] = aux;
 }
 
-void Heapsort::buildHeap(Mind* array, int size) {
-  int left = size/2 + 1;
+void Heapsort::buildHeap(Mind* array, int n) {
+  int left = n/2 + 1;
   while (left > 0) {
     left--;
-    heapify(left, size, array);
+    heapify(left, n, array);
   }
 }
 

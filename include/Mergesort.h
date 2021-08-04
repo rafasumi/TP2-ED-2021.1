@@ -1,7 +1,6 @@
 #ifndef MERGESORT_H
 #define MERGESORT_H
 
-#include <string>
 #include "Mind.h"
 
 namespace Mergesort {
