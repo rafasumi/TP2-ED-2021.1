@@ -8,6 +8,8 @@
 #include "Mergesort.h"
 #include "RadixSort.h"
 
+// Função main do programa. Faz a leitura do arquivo para o número de linhas especificado e, a partir disso, cria o array de
+// consciências. Depois, executa a configuração de ordenação passada como parâmetro (se o parâmetro for válido)
 int main(int argc, char const *argv[]) {
   std::ifstream inputFile(argv[1]);
   int config = std::stoi(argv[2]);
@@ -50,6 +52,8 @@ int main(int argc, char const *argv[]) {
       Mergesort::mergesort(array, n);
       break;
     default:
+      delete[] array;
+      std::cerr << "Configuração inválida" << std::endl;
       return -1;
   }
 
